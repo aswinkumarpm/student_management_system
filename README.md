@@ -33,7 +33,7 @@ To show a student mark, go to this URL: http://127.0.0.1:8000/api/v1/students/ma
 The delete button is on the top right side to delete particular student mark details.
 
 
-The postman Collection Inputs is given in the Repository, File Name: Students.postman_collection.
+The postman Collection Inputs(Test json file) is given in the Repository, File Name: Students.postman_collection.
 
 The Responses is also added in the Output  Responses Json Folder in the repository. 
 
