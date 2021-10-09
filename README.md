@@ -35,7 +35,7 @@ The delete button is on the top right side to delete particular student mark det
 
 The postman Collection Inputs is given in the Repository, File Name: Students.postman_collection.
 
-The Responses is also added in the Output  Responses Json Folder. 
+The Responses is also added in the Output  Responses Json Folder in the repository. 
 
 
 
