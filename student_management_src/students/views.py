@@ -8,7 +8,7 @@ from rest_framework.parsers import JSONParser
 from rest_framework import status
 
 from students.models import Student, StudentMark
-from students.serializers import StudentSerializer, StudentMarkSerializer, StudentMarkCreateSerializer
+from students.serializers import StudentSerializer, StudentMarkSerializer, StudentMarkFormSerializer
 from rest_framework.decorators import api_view
 
 
@@ -36,11 +36,11 @@ class ListStudentMarkAPIView(ListAPIView):
 
 class CreateStudentMarkAPIView(CreateAPIView):
     queryset = StudentMark.objects.all()
-    serializer_class = StudentMarkCreateSerializer
+    serializer_class = StudentMarkFormSerializer
 
 class UpdateStudentMarkAPIView(UpdateAPIView):
     queryset = StudentMark.objects.all()
-    serializer_class = StudentMarkCreateSerializer
+    serializer_class = StudentMarkFormSerializer
 
 class DeleteStudentMarkAPIView(DestroyAPIView):
     queryset = StudentMark.objects.all()

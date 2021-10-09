@@ -36,7 +36,8 @@ class StudentMarkSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = StudentMark
-        fields = ('name',
+        fields = ('id',
+            'name',
                   'term',
                   'maths_mark',
                   'science_mark',
@@ -46,7 +47,7 @@ class StudentMarkSerializer(serializers.ModelSerializer):
 
                   )
 
-class StudentMarkCreateSerializer(serializers.ModelSerializer):
+class StudentMarkFormSerializer(serializers.ModelSerializer):
     TERM_CHOICES = (
         ('One', 'One'),
         ('Two', 'Two'),
