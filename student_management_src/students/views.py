@@ -1,19 +1,13 @@
-from django.shortcuts import render
-
-# Create your views here.
-
-from django.http.response import JsonResponse
-from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
-from rest_framework.parsers import JSONParser
 from rest_framework import status
 from rest_framework.response import Response
 
+from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, ListCreateAPIView, ListAPIView
+
 from students.models import Student, StudentMark
 from students.serializers import StudentSerializer, StudentMarkSerializer, StudentMarkFormSerializer
-from rest_framework.decorators import api_view
 
 
-class ListStudentAPIView(ListAPIView):
+class ListStudentAPIView(ListCreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
@@ -23,23 +17,21 @@ class CreateStudentAPIView(CreateAPIView):
     serializer_class = StudentSerializer
 
 
-class UpdateStudentAPIView(UpdateAPIView):
+class StudentRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
     queryset = Student.objects.all()
+    lookup_field = 'pk'
     serializer_class = StudentSerializer
 
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response({
+            "message": "Student deleted successfully"
+        },
+            status=status.HTTP_200_OK)
 
-class DeleteStudentAPIView(DestroyAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
-
-    def delete(self, request, *args, **kwargs):
-        self.destroy(request, *args, **kwargs)
-        return JsonResponse({'message': 'Student was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
-
-
-class ShowStudentAPIView(RetrieveAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
+    def perform_destroy(self, instance):
+        instance.delete()
 
 
 class ListStudentMarkAPIView(ListAPIView):
@@ -52,20 +44,18 @@ class CreateStudentMarkAPIView(CreateAPIView):
     serializer_class = StudentMarkFormSerializer
 
 
-class UpdateStudentMarkAPIView(UpdateAPIView):
+class StudentMarkRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
     queryset = StudentMark.objects.all()
+    lookup_field = 'pk'
     serializer_class = StudentMarkFormSerializer
 
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response({
+            "message": "Student Mark deleted successfully"
+        },
+            status=status.HTTP_200_OK)
 
-class DeleteStudentMarkAPIView(DestroyAPIView):
-    queryset = StudentMark.objects.all()
-    serializer_class = StudentMarkSerializer
-
-    def delete(self, request, *args, **kwargs):
-        self.destroy(request, *args, **kwargs)
-        return JsonResponse({'message': 'StudentMark was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
-
-
-class ShowStudentMarkAPIView(RetrieveAPIView):
-    queryset = StudentMark.objects.all()
-    serializer_class = StudentMarkFormSerializer
+    def perform_destroy(self, instance):
+        instance.delete()

@@ -6,13 +6,48 @@
 	},
 	"item": [
 		{
+			"name": "http://127.0.0.1:8000/api/v1/students/create/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Mary\",\n        \"age\": 26,\n        \"gender\": \"F\",\n        \"reporting_teacher\": \"Katie\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/students/create/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"students",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "http://127.0.0.1:8000/api/v1/students/marks/create/",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n        \"student\": 1,\n    \"term\" : \"One\",\n    \"maths_mark\": 50,\n    \"history_mark\" : 50,\n    \"science_mark\" : 50\n\n}",
+					"raw": "{\n        \"student\": 2,\n    \"term\" : \"One\",\n    \"maths_mark\": 50,\n    \"history_mark\" : 50,\n    \"science_mark\" : 50\n\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -39,7 +74,86 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "http://127.0.0.1:8000/api/v1/students/marks/create/",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"student\": 2,\n    \"term\" : \"One\",\n    \"maths_mark\": 50,\n    \"history_mark\" : 50,\n    \"science_mark\" : 50\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/students/marks/create/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"marks",
+								"create",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 09 Oct 2021 10:02:56 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.6.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "78"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"student\": 2,\n    \"term\": \"One\",\n    \"maths_mark\": 50,\n    \"science_mark\": 50,\n    \"history_mark\": 50\n}"
+				}
+			]
 		},
 		{
 			"name": "http://localhost:8000/api/v1/students/",
@@ -64,6 +178,101 @@
 						"api",
 						"v1",
 						"students",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:8000/api/v1/students/",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/students/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"students",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 09 Oct 2021 09:41:05 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.6.9"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "227"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"John Doe\",\n        \"age\": 25,\n        \"gender\": \"M\",\n        \"reporting_teacher\": \"Katie\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Mary\",\n        \"age\": 22,\n        \"gender\": \"F\",\n        \"reporting_teacher\": \"Max\"\n    },\n    {\n        \"id\": 6,\n        \"name\": \"John Doe1\",\n        \"age\": 25,\n        \"gender\": \"M\",\n        \"reporting_teacher\": \"Katie\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/v1/students/marks/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/students/marks/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"students",
+						"marks",
 						""
 					]
 				}
@@ -104,39 +313,13 @@
 			"response": []
 		},
 		{
-			"name": "http://127.0.0.1:8000/api/v1/students/marks/",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/students/marks/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"students",
-						"marks",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "http://localhost:8000/api/v1/students/marks/update/2/",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n        \"student\": 2,\n    \"term\" : \"One\",\n    \"maths_mark\": 50,\n    \"history_mark\" : 50,\n    \"science_mark\" : 50\n\n}",
+					"raw": "{\n        \"student\": 1,\n    \"term\" : \"One\",\n    \"maths_mark\": 50,\n    \"history_mark\" : 50,\n    \"science_mark\" : 50\n\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -144,7 +327,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/api/v1/students/marks/update/2/",
+					"raw": "http://localhost:8000/api/v1/students/marks/1/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -155,43 +338,7 @@
 						"v1",
 						"students",
 						"marks",
-						"update",
-						"2",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://127.0.0.1:8000/api/v1/students/create/",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"name\": \"John Doe1\",\n        \"age\": 25,\n        \"gender\": \"M\",\n        \"reporting_teacher\": \"Katie\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/v1/students/create/",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"v1",
-						"students",
-						"create",
+						"1",
 						""
 					]
 				}
@@ -204,10 +351,13 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/v1/students/marks/delete/3/",
+					"raw": "http://127.0.0.1:8000/api/v1/students/marks/2/",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "8000",
 					"path": [
@@ -215,8 +365,7 @@
 						"v1",
 						"students",
 						"marks",
-						"delete",
-						"3",
+						"2",
 						""
 					]
 				}
@@ -229,7 +378,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/v1/students/delete/3/",
+					"raw": "http://localhost:8000/api/v1/students/delete/6/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -240,7 +389,7 @@
 						"v1",
 						"students",
 						"delete",
-						"3",
+						"6",
 						""
 					]
 				}
@@ -248,12 +397,12 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8000/api/v1/students/marks/details/2/",
+			"name": "http://localhost:8000/api/v1/students/marks",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/v1/students/marks/details/2/",
+					"raw": "http://localhost:8000/api/v1/students/marks/1/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -264,8 +413,7 @@
 						"v1",
 						"students",
 						"marks",
-						"details",
-						"2",
+						"1",
 						""
 					]
 				}
@@ -273,12 +421,12 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8000/api/v1/students/details/1/",
+			"name": "http://localhost:8000/api/v1/students/1/",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/api/v1/students/details/1/",
+					"raw": "http://localhost:8000/api/v1/students/1/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -288,7 +436,6 @@
 						"api",
 						"v1",
 						"students",
-						"details",
 						"1",
 						""
 					]
