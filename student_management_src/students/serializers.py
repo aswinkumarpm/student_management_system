@@ -35,11 +35,10 @@ class StudentMarkSerializer(serializers.ModelSerializer):
     name = serializers.CharField(source='student.name', read_only=True)
     created = serializers.DateTimeField(format='%b %d %Y, %I:%M %p')
 
-
     class Meta:
         model = StudentMark
         fields = ('id',
-            'name',
+                  'name',
                   'term',
                   'maths_mark',
                   'science_mark',
@@ -48,6 +47,7 @@ class StudentMarkSerializer(serializers.ModelSerializer):
                   'created'
 
                   )
+
 
 class StudentMarkFormSerializer(serializers.ModelSerializer):
     TERM_CHOICES = (
@@ -61,9 +61,9 @@ class StudentMarkFormSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentMark
         fields = (
-                  'student',
-                  'term',
-                  'maths_mark',
-                  'science_mark',
-                  'history_mark',
-                  )
+            'student',
+            'term',
+            'maths_mark',
+            'science_mark',
+            'history_mark',
+        )
