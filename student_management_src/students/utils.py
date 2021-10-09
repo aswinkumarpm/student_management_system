@@ -8,7 +8,7 @@ def custom_exception_handler(exc, context):
 
     if isinstance(exc, Http404):
         custom_response_data = {
-            'error': 'This object does not exist.' # custom exception message
+            'error': 'This data does not exist.' # custom exception message
         }
         response.data = custom_response_data # set the custom response data on response object
 
