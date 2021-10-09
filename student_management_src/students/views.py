@@ -17,20 +17,16 @@ class ListStudentAPIView(ListAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
+
 class CreateStudentAPIView(CreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
-    def create(self, request, *args, **kwargs):
-        """overwrite this for extra actions"""
-        serializer = self.serializer_class(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
 
 class UpdateStudentAPIView(UpdateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
+
 
 class DeleteStudentAPIView(DestroyAPIView):
     queryset = Student.objects.all()
@@ -38,7 +34,7 @@ class DeleteStudentAPIView(DestroyAPIView):
 
     def delete(self, request, *args, **kwargs):
         self.destroy(request, *args, **kwargs)
-        return JsonResponse({'message': 'Student was deleted successfully!'},status=status.HTTP_204_NO_CONTENT)
+        return JsonResponse({'message': 'Student was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
 
 
 class ShowStudentAPIView(RetrieveAPIView):
@@ -50,17 +46,16 @@ class ListStudentMarkAPIView(ListAPIView):
     queryset = StudentMark.objects.all()
     serializer_class = StudentMarkSerializer
 
+
 class CreateStudentMarkAPIView(CreateAPIView):
     queryset = StudentMark.objects.all()
     serializer_class = StudentMarkFormSerializer
 
-class ShowStudentMarkAPIView(RetrieveAPIView):
-    queryset = StudentMark.objects.all()
-    serializer_class = StudentMarkFormSerializer
 
 class UpdateStudentMarkAPIView(UpdateAPIView):
     queryset = StudentMark.objects.all()
     serializer_class = StudentMarkFormSerializer
+
 
 class DeleteStudentMarkAPIView(DestroyAPIView):
     queryset = StudentMark.objects.all()
@@ -68,4 +63,9 @@ class DeleteStudentMarkAPIView(DestroyAPIView):
 
     def delete(self, request, *args, **kwargs):
         self.destroy(request, *args, **kwargs)
-        return JsonResponse({'message': 'StudentMark was deleted successfully!'},status=status.HTTP_204_NO_CONTENT)
+        return JsonResponse({'message': 'StudentMark was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
+
+
+class ShowStudentMarkAPIView(RetrieveAPIView):
+    queryset = StudentMark.objects.all()
+    serializer_class = StudentMarkFormSerializer
