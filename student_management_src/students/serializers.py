@@ -33,6 +33,8 @@ class StudentMarkSerializer(serializers.ModelSerializer):
     )
     term = serializers.ChoiceField(choices=TERM_CHOICES)
     name = serializers.CharField(source='student.name', read_only=True)
+    created = serializers.DateTimeField(format='%b %d %Y, %I:%M %p')
+
 
     class Meta:
         model = StudentMark
