@@ -3,12 +3,35 @@ from django.shortcuts import render
 # Create your views here.
 
 from django.http.response import JsonResponse
+from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
 from rest_framework.parsers import JSONParser
 from rest_framework import status
 
 from students.models import Student
 from students.serializers import StudentSerializer
 from rest_framework.decorators import api_view
+
+
+class ListStudentAPIView(ListAPIView):
+    """This endpoint list all of the available Students from the database"""
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+class CreateStudentAPIView(CreateAPIView):
+    """This endpoint allows for creation of a Student"""
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+class UpdateStudentAPIView(UpdateAPIView):
+    """This endpoint allows for updating a specific Student by passing in the id of the Student to update"""
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+class DeleteStudentAPIView(DestroyAPIView):
+    """This endpoint allows for deletion of a specific Student from the database"""
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
 
 
 @api_view(['GET', 'POST', 'DELETE'])
