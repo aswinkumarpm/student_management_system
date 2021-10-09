@@ -6,6 +6,7 @@ from django.http.response import JsonResponse
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
 from rest_framework.parsers import JSONParser
 from rest_framework import status
+from rest_framework.response import Response
 
 from students.models import Student, StudentMark
 from students.serializers import StudentSerializer, StudentMarkSerializer, StudentMarkFormSerializer
@@ -19,6 +20,13 @@ class ListStudentAPIView(ListAPIView):
 class CreateStudentAPIView(CreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
+
+    def create(self, request, *args, **kwargs):
+        """overwrite this for extra actions"""
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
 
 class UpdateStudentAPIView(UpdateAPIView):
     queryset = Student.objects.all()
